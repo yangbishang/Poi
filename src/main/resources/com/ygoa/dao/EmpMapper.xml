@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ygoa.dao.EmpMapper">   <!--说明这个文件是与EmpMapper对应的-->
+
+    <resultMap id="empList" type="com.ygoa.pojo.Employees">
+        <id property="empNo" column="empno"/>
+        <result property="eName" column="ename"/>
+    </resultMap>
+
+    <resultMap id="empList01" type="com.ygoa.pojo.Employees">
+        <id property="empNo" column="empno"/>
+        <result property="eName" column="ename"/>
+        <result property="deptNo" column="deptno"/>
+        <result property="job" column="job"/>
+    </resultMap>
+
+    <select id="findAll01" resultMap="empList">
+        SELECT e.empno,e.ename,d.deptno,d.dname
+        FROM  employees e LEFT JOIN dept d
+        ON e.deptno = d.deptno
+        ORDER  by d.deptno
+    </select>
+
+
+
+
+</mapper>

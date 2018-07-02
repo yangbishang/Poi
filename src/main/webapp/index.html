@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+  </head>
+  <body>
+  <div class="container">
+    <form id="form" methon="post">
+      <div class="form-control">
+        <label class="col-form-label" for="username">用户名</label>
+        <input id="username" name="username" type="text" placeholder="用户名"  class="form-control">
+        <div id="tips"></div><img alt="invalidate" id="img">
+      </div>
+
+      <div class="form-control">
+        <label class="col-form-label" for="password">密码</label>
+        <input id="password" name="password" type="password" placeholder="密码"  class="form-control">
+      </div>
+      <button id="btnLogin" type="button" class="btn btn-primary block">登录</button>
+    </form>
+
+  </div>
+
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script >
+
+    $(window).on("load",()=>{
+
+        alert('加载成功了吗')
+
+        $("#btnLogin").click(function(){
+            var username = $("#username").val()
+            var password = $("#password").val()
+
+            alert('加载成功了吗02')
+
+/*
+            var dataAry=[];
+            var data1 = {"name":"test","password":"gz"}
+*/
+            $.ajax({
+                type:"post",
+                url:"/yy/test",
+                dataType:"json",
+                data:{username:username,password:password},
+                success:function(data){
+                    alter(data)
+                }
+            })
+        })
+
+
+    })
+
+
+  </script>
+
+
+  </body>
+</html>
